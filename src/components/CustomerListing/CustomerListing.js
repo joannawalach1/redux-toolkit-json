@@ -4,16 +4,18 @@ import { addCustomers} from '../../features/customers/customerSlice'
 import CustomerCard from '../CustomerCard/CustomerCard';
 
 
-const CustomerListing = () => {
+const CustomerListing = (props) => {
     const customers = useSelector(addCustomers);
     console.log(customers.payload)
     let renderCustomers = "";
-    renderCustomers = (customers.payload === "True") ? (customers.payload.map((customer, index) => {
-            <CustomerCard key={index} data={customer} />
-        })) : (<div className="error"><h3>Error</h3></div>);
+    renderCustomers = 
+    (customers.Response === "True") ? 
+    (customers.customers.map((customer, index) => {
+    <CustomerCard key={index} data={customer} />
+    })) : (<div className="error"><h3>Error</h3></div>);
     return (
         <div>
-            <h2>{renderCustomers}</h2>
+            {renderCustomers}
         </div>
     )
 }
